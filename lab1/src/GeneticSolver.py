@@ -112,6 +112,17 @@ if __name__ == '__main__':
 
 
     values_flat = [v.item() for v in values]
+
+    mean_value = np.mean(values_flat)
+    std_value = np.std(values_flat)
+    best_value = np.max(values_flat)
+
+    print("\n===== STATYSTYKI DLA PRZEBIEGU ALGORYTMU =====")
+    print(f"🧬 Współczynnik mutacji: {mutation_rate}")
+    print(f"📈 Średni wynik (mean): {mean_value:.6f}")
+    print(f"⭐ Najlepszy wynik (max): {best_value:.6f}")
+    print(f"📉 Odchylenie standardowe (std): {std_value:.6f}")
+    print("=============================================\n")
     # Wykres
     plt.figure(figsize=(10, 5))
     plt.plot(range(1, len(values_flat) + 1), values_flat, marker='o', markersize=3, linewidth=0, label="Najlepszy wynik")
