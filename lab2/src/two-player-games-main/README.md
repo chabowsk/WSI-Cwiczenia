@@ -1,3 +1,4 @@
+source: https://github.com/lychanl/two-player-games
 # two-player-games
 Library of two-player logical games for WUT students
 
