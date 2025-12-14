@@ -61,7 +61,6 @@ class ID3Solver:
         return -np.sum(probabilities * np.log2(probabilities))
 
     def information_gain(self, X, y, attribute):
-        print("co przechowuje X[attr...]", X[attribute])
         """Oblicza zysk informacyjny (Information Gain) dla danego atrybutu."""
         total_entropy = self.entropy(y)
     
@@ -70,7 +69,6 @@ class ID3Solver:
         
         for v, count in zip(values, counts):
             subset_y = y[X[attribute] == v]
-            print("subset of y" ,subset_y)
             weighted_entropy += (count / len(X)) * self.entropy(subset_y)
             
         return total_entropy - weighted_entropy
@@ -146,9 +144,7 @@ def preprocess_data(filepath):
 
     # Usuwamy oryginalne kolumny numeryczne oraz ID
     drop_cols = ['id', 'age', 'age_years', 'height', 'weight', 'ap_hi', 'ap_lo']
-    print("przed: ", df.shape)
     df_processed = df.drop(columns=drop_cols)
-    print("po: ", df_processed.shape)
     return df_processed
 
 def main():
