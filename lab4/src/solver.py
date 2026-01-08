@@ -6,6 +6,7 @@ START_POINT_2D = [4.0, -3.0]
 SHIFT = 1e-15
 MAX_ITERATIONS = 1000
 INIT_LEARNING_RATE = 0.01
+LIMIT_VALUE = 100
 
 
 def ackley_function(x):
@@ -60,7 +61,7 @@ class GradientDescentOptimizer:
             grad = gradient_func(current_point)
             current_point = current_point - self.learning_rate * grad
             
-            if np.any(np.abs(current_point) > 100): break
+            if np.any(np.abs(current_point) > LIMIT_VALUE): break
 
         final_value = func(current_point)
         value_history.append(final_value)
