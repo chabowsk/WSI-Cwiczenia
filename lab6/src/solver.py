@@ -51,19 +51,19 @@ def train_agent(episodes, beta, gamma, epsilon, max_steps=100):
             action = agent.choose_action(state)
             
             # Standardowa nagroda Minigrid (bez modyfikacji)
-            _, reward, done, truncated, _ = env.step(action)
+            _, reward, terminated, truncated, _ = env.step(action)
             
             next_state = get_simple_state(env)
 
             # Modyfikacja nagrody: kara za każdy krok poza celem
             current_reward = reward if reward >0 else -0.01
             
-            agent.learn(state, action, current_reward, next_state, done)
+            agent.learn(state, action, current_reward, next_state, terminated)
             
             state = next_state
             total_reward += reward
             
-            if (done or truncated):
+            if (terminated or truncated):
                 break
         
         rewards_history.append(total_reward)
